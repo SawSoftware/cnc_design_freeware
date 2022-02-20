@@ -1,18 +1,26 @@
--- Start point
 widgets = {}
+
+buttons = {}
+graphic_buttons = {}
+radio_buttons = {}
+textboxes = {}
+labels = {}
 
 
 
 --- Start Widget
-function newWidget(id,x,y,w,h)
-  table.insert(widgets,{id = id,x = x,y = y,w = w,h = h,hidden = false})
+function newWidget(id,x,y,w,h,mode)
+  table.insert(widgets,{id = id,x = x,y = y,w = w,h = h,mode = mode,hidden = false})
   print("Made widget with the ID of: "..id)
+  if id == nil or x == nil or y == nil or w == nil or h == nil then
+    error("One or more variable is nil")
+  end
 end
 
 function drawWidgets()
   for k,v in ipairs(widgets) do
     if not v.hidden then
-      love.graphics.rectangle("fill", v.x, v.y, v.w, v.h)
+      love.graphics.rectangle(v.mode, v.x, v.y, v.w, v.h)
     end
   end
 end
