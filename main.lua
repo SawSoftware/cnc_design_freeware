@@ -1,11 +1,12 @@
 function love.load()
 require("modules.gui")
 newWidget("job_setup",250,250,200,200,"fill")
-newWidget("test",0,0,25,25,"line")
+newButton("js_exit","Exit",0,0,100,50,"job_setup")
 end
 
 function love.draw()
 drawWidgets()
+drawButtons()
 end
 
 function love.update(dt)
@@ -19,8 +20,10 @@ function love.update(dt)
   changeWidgetPS("job_setup",(ww/2)-(wid_w/2),(wh/2)-(wid_h/2))
   if love.keyboard.isDown("p") then
     hideWidget("job_setup")
+    hideButton("js_exit")
   end
   if love.keyboard.isDown("k") then
     showWidget("job_setup")
+    showButton("js_exit")
   end
 end
